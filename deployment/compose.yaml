@@ -1,0 +1,21 @@
+name: xssg-docs
+
+services:
+  showdoc:
+    image: ${SHOWDOC_IMAGE:-xssg/showdoc:v3.9.8-xssg.1}
+    restart: unless-stopped
+    environment:
+      SHOWDOC_IMPORT_SAMPLE_PROJECTS: "0"
+    ports:
+      - "127.0.0.1:${SHOWDOC_LOCAL_PORT:-8183}:80"
+    volumes:
+      - data:/var/www/html
+    secrets:
+      - showdoc_admin_password
+
+volumes:
+  data:
+
+secrets:
+  showdoc_admin_password:
+    file: ${SHOWDOC_ADMIN_PASSWORD_FILE:?Set SHOWDOC_ADMIN_PASSWORD_FILE to the private administrator password file}

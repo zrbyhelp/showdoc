@@ -338,6 +338,10 @@ class UserController extends BaseController
      */
     private function importSampleProjects(int $uid): void
     {
+        if (getenv('SHOWDOC_IMPORT_SAMPLE_PROJECTS') === '0') {
+            return;
+        }
+
         $files = [
             '../Public/SampleZip/apidoc.zip',
             '../Public/SampleZip/databasedoc.zip',

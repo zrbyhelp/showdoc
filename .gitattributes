@@ -46,3 +46,4 @@
 *.docx binary
 *.xls binary
 *.xlsx binary
+Sqlite/showdoc.db.php binary !eol
